@@ -1,0 +1,33 @@
+---
+title: "Create Data Products - Assignment 1"
+author: "Simon Baumgart"
+date: "August 3, 2019"
+output: html_document
+---
+
+## Create Data Products - Assignment 1
+
+```{r, echo=F}
+library(leaflet)
+locations <- data.frame(lat=c(52.5278, 52.5257), lng =c(13.44987,13.4517), names = c("Simons Home", "My Favorite Cafe"))
+leaflet(data = locations) %>% 
+    addTiles() %>% 
+    addMarkers(lat = ~lat, lng = ~lng, popup = ~names, icon = list(
+    iconUrl = c('http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/house-icon.png','http://icons.iconarchive.com/icons/icons8/windows-8/512/Food-Cafe-icon.png'),
+    iconSize = c(30, 30))) %>%
+    addPolylines(lng = ~lng, lat = ~lat, popup = "My Way on Saturdays")
+```
+
+
+code book:
+
+```{r, eval=FALSE}
+library(leaflet)
+
+locations <- data.frame(lat=c(52.5278, 52.5257), lng =c(13.44987,13.4517), names = c("Simons Home", "My Favorite Cafe"))
+
+leaflet(data = locations) %>% 
+    addTiles() %>% 
+    addMarkers(lat = ~lat, lng = ~lng, popup = ~names, icon = list(iconUrl = c('http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/house-icon.png','http://icons.iconarchive.com/icons/icons8/windows-8/512/Food-Cafe-icon.png'),iconSize = c(30, 30))) %>%
+    addPolylines(lng = ~lng, lat = ~lat, popup = "My Way on Saturdays")
+```
